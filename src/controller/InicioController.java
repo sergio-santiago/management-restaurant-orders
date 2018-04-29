@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import controller.administracion.PassAdministracionController;
 import view.InicioView;
 
 public class InicioController {
@@ -23,6 +24,7 @@ public class InicioController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Administracion del sistema...");
+				new PassAdministracionController();
 			}
 		});
 	}

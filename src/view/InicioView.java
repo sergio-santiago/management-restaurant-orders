@@ -20,7 +20,6 @@ public class InicioView extends JFrame {
 		//jFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 768);
-		setVisible(true);
 		
 		//contentPane
 		contentPane = new JPanel();
@@ -39,6 +38,8 @@ public class InicioView extends JFrame {
 		btnInicioDelSistema.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		btnInicioDelSistema.setBounds(10, 11, 1330, 646);
 		contentPane.add(btnInicioDelSistema);
+		
+		setVisible(true);
 	}
 
 	/**
