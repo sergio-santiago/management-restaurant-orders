@@ -23,7 +23,6 @@ public class InicioController {
 		view.getBtnAdministracionDelSistema().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Administracion del sistema...");
 				new PassAdministracionController();
 			}
 		});
