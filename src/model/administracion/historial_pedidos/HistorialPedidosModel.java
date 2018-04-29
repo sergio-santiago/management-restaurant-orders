@@ -1,6 +1,7 @@
 package model.administracion.historial_pedidos;
 
 import java.sql.Statement;
+import java.text.NumberFormat;
 import javax.swing.table.DefaultTableModel;
 import model.DatabaseConnectionService;
 import java.sql.ResultSet;
@@ -42,10 +43,10 @@ public class HistorialPedidosModel {
 			//Iteramos la los datos metiendolos en el modelo
 			while(resultSet.next()) {
 				rowData[0] = resultSet.getInt("id");
-				rowData[1] = resultSet.getDouble("precio");				
+				rowData[1] = NumberFormat.getCurrencyInstance().format(resultSet.getDouble("precio"));
 				rowData[2] = (resultSet.getString("en_curso").equals("true")) ? true : false;
-				rowData[3] = resultSet.getObject("fecha");
-				rowData[4] = resultSet.getObject("nombre");
+				rowData[3] = resultSet.getString("fecha").substring(0, resultSet.getString("fecha").indexOf(" "));
+				rowData[4] = resultSet.getString("nombre");
 				model.addRow(rowData);//metemos el array de datos como un nuevo registro
 			}
 		} catch (SQLException e) {
