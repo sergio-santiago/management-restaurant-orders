@@ -17,7 +17,7 @@ public class InicioController {
 		view.getBtnInicioDelSistema().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Inicio del sistema...");
+				System.out.println("Inicio del sistema...");//-----------------------------------------------------------------TODO
 			}
 		});
 		view.getBtnAdministracionDelSistema().addActionListener(new ActionListener() {
