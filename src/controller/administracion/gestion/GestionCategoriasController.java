@@ -59,7 +59,7 @@ public class GestionCategoriasController {
 				if(!notEmptyTextField) {
 					view.getLblEditVacio().setVisible(true);
 				} else {
-					view.getLblEditSeleccion().setVisible(false);
+					view.getLblEditVacio().setVisible(false);
 				}
 				if (selectedRow && notEmptyTextField) {
 					view.getTable().getModel().setValueAt(view.getTextFieldEditNombre().getText(), view.getTable().getSelectedRow(), 1);//Actualizamos de la tabla de la vista
