@@ -26,7 +26,7 @@ public class HistorialPedidosController {
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTablePedidos().getSelectedRow() != -1) {
 					destruirVentana();
-					System.out.println("vemos detalles de pedido");//-----------------------------------------------------------------TODO					
+					new DetallesPedidoController((int) view.getTablePedidos().getModel().getValueAt(view.getTablePedidos().getSelectedRow(), 0));
 				} else {
 					view.getLblNoDetalles().setVisible(true);
 				}
