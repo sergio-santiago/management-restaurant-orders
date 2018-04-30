@@ -35,7 +35,7 @@ public class GestionCategoriasModel {
 		try {
 			//Hacemos consulta
 			statement = DatabaseConnectionService.getConnection().createStatement();
-			resultSet = statement.executeQuery("select * from default_database.categoria");
+			resultSet = statement.executeQuery("select * from default_database.categoria order by id asc");
 			
 			//Iteramos la los datos metiendolos en el modelo
 			while(resultSet.next()) {
@@ -53,4 +53,50 @@ public class GestionCategoriasModel {
 		
 		return model;
 	}
+	
+	public void insertNewCategoria(int id, String nombre) {
+		String sql = "insert into default_database.categoria values (" + id + ", '" + nombre + "')";
+		DatabaseConnectionService.openConnection();
+		Statement statement = null;
+		try {
+			statement = DatabaseConnectionService.getConnection().createStatement();
+			statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { if (statement != null) statement.close(); } catch (Exception e) {};
+		    try { if (DatabaseConnectionService.getConnection() != null) DatabaseConnectionService.closeConnection(); } catch (Exception e) {};
+		}
+	}
+	
+	public void updateCategoria(int id, String nombre) {
+		String sql = "update default_database.categoria set nombre = '" + nombre + "' where id = " + id;
+		DatabaseConnectionService.openConnection();
+		Statement statement = null;
+		try {
+			statement = DatabaseConnectionService.getConnection().createStatement();
+			statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { if (statement != null) statement.close(); } catch (Exception e) {};
+		    try { if (DatabaseConnectionService.getConnection() != null) DatabaseConnectionService.closeConnection(); } catch (Exception e) {};
+		}
+	}
+	
+	public void deleteCategoria(int id) {
+		String sql = "delete from default_database.categoria where id = " + id;
+		DatabaseConnectionService.openConnection();
+		Statement statement = null;
+		try {
+			statement = DatabaseConnectionService.getConnection().createStatement();
+			statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { if (statement != null) statement.close(); } catch (Exception e) {};
+		    try { if (DatabaseConnectionService.getConnection() != null) DatabaseConnectionService.closeConnection(); } catch (Exception e) {};
+		}
+	}
+	
 }

@@ -23,6 +23,7 @@ public class HistorialPedidosController {
 
 		//Eventos de la vista
 		view.getBtnDetalles().addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTablePedidos().getSelectedRow() != -1) {
 					destruirVentana();
@@ -34,6 +35,7 @@ public class HistorialPedidosController {
 		});
 		
 		view.getBtnAtras().addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				destruirVentana();
 				new MenuAdministracionController();
