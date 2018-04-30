@@ -5,22 +5,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.table.DefaultTableModel;
 import controller.administracion.MenuAdministracionController;
-import model.administracion.gestion.GestionCategoriasModel;
-import view.administracion.gestion.GestionCategoriasView;
+import model.administracion.gestion.GestionMesasModel;
+import view.administracion.gestion.GestionMesasView;
 
-public class GestionCategoriasController {
+public class GestionMesasController {
 
-	private GestionCategoriasModel model = null;
-	private GestionCategoriasView view = null;
+	private GestionMesasModel model = null;
+	private GestionMesasView view = null;
 	
-	public GestionCategoriasController() {
-		this.model = new GestionCategoriasModel();
-		generarVentana(this.model.getModelCategorias());
+	public GestionMesasController() {
+		this.model = new GestionMesasModel();
+		generarVentana(this.model.getModelMesas());
 	}
 	
 	public void generarVentana(DefaultTableModel pedidosTableModel) {
 		//Creamos la vista(pasamos el modelo de la tabla)
-		this.view = new GestionCategoriasView(pedidosTableModel);
+		this.view = new GestionMesasView(pedidosTableModel);
 		
 		//Eventos de la vista
 		view.getBtnAtras().addActionListener(new ActionListener() {
@@ -38,7 +38,7 @@ public class GestionCategoriasController {
 					int nextId = (int) tableModel.getValueAt(tableModel.getRowCount() - 1, 0) + 1;
 					String name = view.getTextFieldNewNombre().getText();
 					tableModel.addRow(new Object[]{nextId, name});//Insertamos en la tabla de la vista
-					model.insertNewCategoria(nextId, name);//Insertamos en BBDD
+					model.insertNewMesa(nextId, name);//Insertamos en BBDD
 					view.getTextFieldNewNombre().setText("");
 					view.getLblNewVacio().setVisible(false);
 					view.getTable().clearSelection();
@@ -64,7 +64,7 @@ public class GestionCategoriasController {
 				}
 				if (selectedRow && notEmptyTextField) {
 					view.getTable().getModel().setValueAt(view.getTextFieldEditNombre().getText(), view.getTable().getSelectedRow(), 1);//Actualizamos de la tabla de la vista
-					model.updateCategoria((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0), view.getTextFieldEditNombre().getText());//Actualizamos de la BBDD
+					model.updateMesa((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0), view.getTextFieldEditNombre().getText());//Actualizamos de la BBDD
 					view.getTextFieldEditNombre().setText("");
 					view.getTable().clearSelection();
 				}
@@ -76,7 +76,7 @@ public class GestionCategoriasController {
 				if(view.getTable().getSelectedRow() != -1) {
 					int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
 					((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());//Borramos de la tabla de la vista
-					model.deleteCategoria(id);//Borramos de BBDD
+					model.deleteMesa(id);//Borramos de BBDD
 					view.getLblEditSeleccion().setVisible(false);
 					view.getTextFieldEditNombre().setText("");
 					view.getTable().clearSelection();
