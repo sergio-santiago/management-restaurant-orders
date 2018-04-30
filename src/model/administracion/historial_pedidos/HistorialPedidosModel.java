@@ -37,7 +37,7 @@ public class HistorialPedidosModel {
 		try {
 			//Hacemos consulta
 			statement = DatabaseConnectionService.getConnection().createStatement();
-			resultSet = statement.executeQuery("select p.\"ID\", p.PRECIO, p.EN_CURSO, p.FECHA, m.NOMBRE from default_database.PEDIDO p, default_database.MESA m where p.ID_MESA = m.\"ID\"");
+			resultSet = statement.executeQuery("select p.\"ID\", p.PRECIO, p.EN_CURSO, p.FECHA, m.NOMBRE from " + DatabaseConnectionService.getDatabase() + ".PEDIDO p, " + DatabaseConnectionService.getDatabase() + ".MESA m where p.ID_MESA = m.\"ID\"");
 			
 			//Iteramos la los datos metiendolos en el modelo
 			while(resultSet.next()) {

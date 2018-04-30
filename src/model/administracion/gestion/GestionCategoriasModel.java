@@ -35,7 +35,7 @@ public class GestionCategoriasModel {
 		try {
 			//Hacemos consulta
 			statement = DatabaseConnectionService.getConnection().createStatement();
-			resultSet = statement.executeQuery("select * from default_database.categoria order by id asc");
+			resultSet = statement.executeQuery("select * from " + DatabaseConnectionService.getDatabase() + ".categoria order by id asc");
 			
 			//Iteramos la los datos metiendolos en el modelo
 			while(resultSet.next()) {
@@ -55,7 +55,7 @@ public class GestionCategoriasModel {
 	}
 	
 	public void insertNewCategoria(int id, String nombre) {
-		String sql = "insert into default_database.categoria values (" + id + ", '" + nombre + "')";
+		String sql = "insert into " + DatabaseConnectionService.getDatabase() + ".categoria values (" + id + ", '" + nombre + "')";
 		DatabaseConnectionService.openConnection();
 		Statement statement = null;
 		try {
@@ -70,7 +70,7 @@ public class GestionCategoriasModel {
 	}
 	
 	public void updateCategoria(int id, String nombre) {
-		String sql = "update default_database.categoria set nombre = '" + nombre + "' where id = " + id;
+		String sql = "update " + DatabaseConnectionService.getDatabase() + ".categoria set nombre = '" + nombre + "' where id = " + id;
 		DatabaseConnectionService.openConnection();
 		Statement statement = null;
 		try {
@@ -85,7 +85,7 @@ public class GestionCategoriasModel {
 	}
 	
 	public void deleteCategoria(int id) {
-		String sql = "delete from default_database.categoria where id = " + id;
+		String sql = "delete from " + DatabaseConnectionService.getDatabase() + ".categoria where id = " + id;
 		DatabaseConnectionService.openConnection();
 		Statement statement = null;
 		try {

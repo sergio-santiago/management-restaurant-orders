@@ -12,6 +12,7 @@ public final class DatabaseConnectionService {
 	private static String sid = "XE";
 	private static String user = "SYSTEM";
 	private static String pass = "root";
+	private static String database = "default_database";
 	private static String url = null;
 	private static Connection connection = null;
 	
@@ -55,6 +56,10 @@ public final class DatabaseConnectionService {
 
 	public static Connection getConnection() {
 		return DatabaseConnectionService.connection;
+	}
+	
+	public static String getDatabase() {
+		return DatabaseConnectionService.database;
 	}
 	
 }

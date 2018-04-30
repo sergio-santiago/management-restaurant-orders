@@ -44,7 +44,7 @@ public class DetallesPedidoModel {
 				try {
 					//Hacemos consulta
 					statement = DatabaseConnectionService.getConnection().createStatement();
-					String query = "select p.NOMBRE as \"producto\", p.PRECIO as \"precio\", sum (cp.CANTIDAD) as \"unidades\" from default_database.COMANDA c, default_database.PRODUCTO p, default_database.COMANDA_PRODUCTO cp where c.\"ID\" = cp.ID_COMANDA and p.\"ID\" = cp.ID_PRODUCTO and c.ID_PEDIDO = " + idPedido + " group by p.\"ID\", p.NOMBRE, p.PRECIO";
+					String query = "select p.NOMBRE as \"producto\", p.PRECIO as \"precio\", sum (cp.CANTIDAD) as \"unidades\" from " + DatabaseConnectionService.getDatabase() + ".COMANDA c, " + DatabaseConnectionService.getDatabase() + ".PRODUCTO p, " + DatabaseConnectionService.getDatabase() + ".COMANDA_PRODUCTO cp where c.\"ID\" = cp.ID_COMANDA and p.\"ID\" = cp.ID_PRODUCTO and c.ID_PEDIDO = " + idPedido + " group by p.\"ID\", p.NOMBRE, p.PRECIO";
 					resultSet = statement.executeQuery(query);
 					
 					//Iteramos la los datos metiendolos en el modelo
@@ -81,7 +81,7 @@ public class DetallesPedidoModel {
 		try {
 			//Hacemos consulta
 			statement = DatabaseConnectionService.getConnection().createStatement();
-			String query = "select p.\"ID\", p.PRECIO, p.EN_CURSO, p.FECHA, m.NOMBRE from default_database.PEDIDO p, default_database.MESA m where p.ID_MESA = m.\"ID\" and p.\"ID\" = " + idPedido;
+			String query = "select p.\"ID\", p.PRECIO, p.EN_CURSO, p.FECHA, m.NOMBRE from " + DatabaseConnectionService.getDatabase() + ".PEDIDO p, " + DatabaseConnectionService.getDatabase() + ".MESA m where p.ID_MESA = m.\"ID\" and p.\"ID\" = " + idPedido;
 			resultSet = statement.executeQuery(query);
 			resultSet.next();
 			//Metemos en array
