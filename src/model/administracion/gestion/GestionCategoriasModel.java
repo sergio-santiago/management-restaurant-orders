@@ -1,27 +1,25 @@
-package model.administracion.historial_pedidos;
+package model.administracion.gestion;
 
-import java.sql.Statement;
-import java.text.NumberFormat;
-import javax.swing.table.DefaultTableModel;
-import model.DatabaseConnectionService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import model.DatabaseConnectionService;
 
-public class HistorialPedidosModel {
-	
-	public DefaultTableModel getModelPedidos() {
+public class GestionCategoriasModel {
+	public DefaultTableModel getModelCategorias() {
 		//Creamos el modelo vacio
-		String[] columnasModel = {"ID", "Precio", "En curso?", "Fecha", "Mesa"};
+		String[] columnasModel = {"ID", "Nombre"};
 		DefaultTableModel model = new DefaultTableModel(null, columnasModel) {//Al crear el modelo sin datos modificamos algunos metodos de la clase
 			private static final long serialVersionUID = 1L;
 				Class<?>[] columnTypes = new Class[] {
-					Float.class, Integer.class, Boolean.class, String.class, String.class
+						Integer.class, String.class
 				};
 				public Class<?> getColumnClass(int columnIndex) {
 					return columnTypes[columnIndex];
 				}//Restrincion de tipo de datos en cada columna
 				boolean[] columnEditables = new boolean[] {
-					false, false, false, false, false
+					false, false
 				};
 				public boolean isCellEditable(int row, int column) {
 					return columnEditables[column];
@@ -37,15 +35,12 @@ public class HistorialPedidosModel {
 		try {
 			//Hacemos consulta
 			statement = DatabaseConnectionService.getConnection().createStatement();
-			resultSet = statement.executeQuery("select p.\"ID\", p.PRECIO, p.EN_CURSO, p.FECHA, m.NOMBRE from default_database.PEDIDO p, default_database.MESA m where p.ID_MESA = m.\"ID\"");
+			resultSet = statement.executeQuery("select * from default_database.categoria");
 			
 			//Iteramos la los datos metiendolos en el modelo
 			while(resultSet.next()) {
 				rowData[0] = resultSet.getInt("id");
-				rowData[1] = NumberFormat.getCurrencyInstance().format(resultSet.getDouble("precio"));
-				rowData[2] = (resultSet.getString("en_curso").equals("true")) ? true : false;
-				rowData[3] = resultSet.getString("fecha").substring(0, resultSet.getString("fecha").indexOf(" "));
-				rowData[4] = resultSet.getString("nombre");
+				rowData[1] = resultSet.getString("nombre");
 				model.addRow(rowData);//metemos el array de datos como un nuevo registro
 			}
 		} catch (SQLException e) {
