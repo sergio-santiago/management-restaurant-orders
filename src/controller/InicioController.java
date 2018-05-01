@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.administracion.PassAdministracionController;
+import controller.sistema_pedidos.MenuSistemaPedidosController;
 import view.InicioView;
 
 public class InicioController {
@@ -17,7 +18,8 @@ public class InicioController {
 		view.getBtnInicioDelSistema().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Inicio del sistema...");//-----------------------------------------------------------------TODO
+				destruirVentana();
+				new MenuSistemaPedidosController();
 			}
 		});
 		view.getBtnAdministracionDelSistema().addActionListener(new ActionListener() {
