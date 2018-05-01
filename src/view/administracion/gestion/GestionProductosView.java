@@ -49,7 +49,7 @@ public class GestionProductosView extends JFrame {
 	 * Create the frame.
 	 * @param tableModel 
 	 */
-	public GestionProductosView(TableModel tableModel, DefaultComboBoxModel<String> categoriaComboBoxModel) {
+	public GestionProductosView(TableModel tableModel, DefaultComboBoxModel<String> categoriaComboBoxModelNew, DefaultComboBoxModel<String> categoriaComboBoxModelEdit) {
 		//jFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1366, 768);
@@ -184,14 +184,14 @@ public class GestionProductosView extends JFrame {
 		
 		//comboBoxCategoriaNew
 		comboBoxCategoriaNew = new JComboBox<String>();
-		comboBoxCategoriaNew.setModel(categoriaComboBoxModel);		
+		comboBoxCategoriaNew.setModel(categoriaComboBoxModelNew);		
 		comboBoxCategoriaNew.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		comboBoxCategoriaNew.setBounds(10, 181, 325, 23);
 		contentPane.add(comboBoxCategoriaNew);
 		
 		//comboBoxCategoriaEdit
 		comboBoxCategoriaEdit = new JComboBox<String>();
-		comboBoxCategoriaEdit.setModel(categoriaComboBoxModel);
+		comboBoxCategoriaEdit.setModel(categoriaComboBoxModelEdit);
 		comboBoxCategoriaEdit.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		comboBoxCategoriaEdit.setBounds(10, 471, 325, 23);
 		contentPane.add(comboBoxCategoriaEdit);
