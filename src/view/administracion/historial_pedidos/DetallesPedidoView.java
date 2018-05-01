@@ -77,7 +77,7 @@ public class DetallesPedidoView extends JFrame {
 		
 		String enCursoString = (enCursoP) ? "SI" : "NO";
 		enCurso = new JLabel(enCursoString);
-		Color enCursoColor = (enCursoP) ? new Color(0, 255, 0) : new Color(255, 0, 0);
+		Color enCursoColor = (enCursoP) ? new Color(0, 204, 0) : new Color(255, 0, 0);
 		enCurso.setForeground(enCursoColor);
 		enCurso.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		enCurso.setBounds(10, 191, 300, 85);
