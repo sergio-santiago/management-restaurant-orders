@@ -1,5 +1,5 @@
 # Management restaurant orders
-System to manage the orders of a restoration business developed in Java, final project of 1ºDAW.
+System to manage the orders of a restoration business developed in Java.
 * The database used in the project is an Oracle Database 11g Express Edition
 * For the graphical part the Swing graphic library is used
 * The project is structured in a MVC pattern
@@ -153,3 +153,7 @@ insert into comanda_producto values (3, 13, 1);
 insert into comanda_producto values (4, 18, 1);
 insert into comanda_producto values (5, 5, 1);
 ```
+## Some views of the project
+![new product](https://image.ibb.co/jebYDn/2018_05_01_18_00_00.png)
+![order details](https://image.ibb.co/dqrdeS/2018_05_01_18_00_35.png)
+![administration menu](https://image.ibb.co/bAJPKS/2018_05_01_17_59_27.png)
