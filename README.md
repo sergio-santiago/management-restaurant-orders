@@ -34,13 +34,13 @@ System to manage the orders of a restoration business developed in Java.
 drop table categoria cascade constraints;
 create table categoria(
 id number primary key,
-nombre varchar2(255) not null
+nombre varchar2(255) not null unique
 );
 
 drop table producto cascade constraints;
 create table producto(
 id number primary key,
-nombre varchar2(255) not null,
+nombre varchar2(255) not null unique,
 precio number not null,
 id_categoria number,
 foreign key(id_categoria) references categoria(id) on delete set null
@@ -49,7 +49,7 @@ foreign key(id_categoria) references categoria(id) on delete set null
 drop table mesa cascade constraints;
 create table mesa(
 id number primary key,
-nombre varchar2(255) not null
+nombre varchar2(255) not null unique
 );
 
 drop table pedido cascade constraints;
