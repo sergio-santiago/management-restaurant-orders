@@ -80,7 +80,7 @@ public class GestionProductosController {
 					view.getLblEditVacio().setVisible(false);
 				}
 				if (selectedRow && notEmptyTextField) {
-					if(!thereIsNameInTable(view.getTextFieldEditNombre().getText())) {
+					if(!thereIsNameInTable(view.getTextFieldEditNombre().getText()) || nameIsSelectedRow(view.getTextFieldEditNombre().getText())) {
 						DefaultTableModel tableModel = (DefaultTableModel) view.getTable().getModel();
 						int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
 						String name = view.getTextFieldEditNombre().getText();
@@ -189,6 +189,11 @@ public class GestionProductosController {
 			}
 		}
 		return thereIsNameInTable;
+	}
+	
+	private boolean nameIsSelectedRow(String name) {
+		String selectedRowName = (String) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 1);
+		return selectedRowName.equalsIgnoreCase(name);
 	}
 	
 }
