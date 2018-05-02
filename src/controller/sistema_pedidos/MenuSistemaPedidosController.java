@@ -3,6 +3,9 @@ package controller.sistema_pedidos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.InicioController;
+import controller.sistema_pedidos.add_comanda.MesasAddComandaController;
+import controller.sistema_pedidos.finalizar_pedido.MesasFinalizarPedidoController;
+import controller.sistema_pedidos.nuevo_pedido.MesasNuevoPedidoController;
 import view.sistema_pedidos.MenuSistemaPedidosView;
 
 public class MenuSistemaPedidosController {
@@ -26,21 +29,21 @@ public class MenuSistemaPedidosController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				destruirVentana();
-				System.out.println("NUEVO PEDIDO");
+				new MesasNuevoPedidoController();
 			}
 		});
 		view.getBtnAddComanda().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				destruirVentana();
-				System.out.println("ADD COMANDA A PEDIDO");
+				new MesasAddComandaController();	
 			}
 		});
 		view.getBtnFinalizarPedido().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				destruirVentana();
-				System.out.println("FINALIZAR PEDIDO");
+				new MesasFinalizarPedidoController();
 			}
 		});
 	}
