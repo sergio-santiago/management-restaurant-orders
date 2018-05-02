@@ -43,7 +43,7 @@ id number primary key,
 nombre varchar2(255) not null unique,
 precio number not null,
 id_categoria number,
-foreign key(id_categoria) references categoria(id) on delete set null
+foreign key(id_categoria) references categoria(id) on delete cascade
 );
 
 drop table mesa cascade constraints;
@@ -60,7 +60,7 @@ en_curso varchar2(5) not null,
 fecha date not null,
 id_mesa number,
 check(en_curso in('true', 'false')),
-foreign key(id_mesa) references mesa(id) on delete set null
+foreign key(id_mesa) references mesa(id) on delete cascade
 );
 
 drop table comanda cascade constraints;
