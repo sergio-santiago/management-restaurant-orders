@@ -57,4 +57,27 @@ public class MesasModel {
 		return nombreMesasArray;
 	}
 	
+	public int searchMesaIdByNombre(String nombreMesa) {
+		int id = -1;
+		//Sacamos de BBDD
+		DatabaseConnectionService.openConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			//Hacemos consulta
+			statement = DatabaseConnectionService.getConnection().createStatement();
+			String query = "select id from " + DatabaseConnectionService.getDatabase() + ".mesa where nombre = '" + nombreMesa + "'";
+			resultSet = statement.executeQuery(query);
+			resultSet.next();
+			id = resultSet.getInt("id");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { if (resultSet != null) resultSet.close(); } catch (Exception e) {};
+		    try { if (statement != null) statement.close(); } catch (Exception e) {};
+		    try { if (DatabaseConnectionService.getConnection() != null) DatabaseConnectionService.closeConnection(); } catch (Exception e) {};
+		}
+		return id;
+	}
+	
 }
