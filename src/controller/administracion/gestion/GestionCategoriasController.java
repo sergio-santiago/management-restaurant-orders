@@ -34,14 +34,18 @@ public class GestionCategoriasController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!view.getTextFieldNewNombre().getText().equals("")) {
-					DefaultTableModel tableModel = (DefaultTableModel) view.getTable().getModel();
-					int nextId = (int) tableModel.getValueAt(tableModel.getRowCount() - 1, 0) + 1;
-					String name = view.getTextFieldNewNombre().getText();
-					tableModel.addRow(new Object[]{nextId, name});//Insertamos en la tabla de la vista
-					model.insertNewCategoria(nextId, name);//Insertamos en BBDD
-					view.getTextFieldNewNombre().setText("");
-					view.getLblNewVacio().setVisible(false);
-					view.getTable().clearSelection();
+					if(!thereIsNameInTable(view.getTextFieldNewNombre().getText())) {
+						DefaultTableModel tableModel = (DefaultTableModel) view.getTable().getModel();
+						int nextId = (int) tableModel.getValueAt(tableModel.getRowCount() - 1, 0) + 1;
+						String name = view.getTextFieldNewNombre().getText();
+						tableModel.addRow(new Object[]{nextId, name});//Insertamos en la tabla de la vista
+						model.insertNewCategoria(nextId, name);//Insertamos en BBDD
+						view.getTextFieldNewNombre().setText("");
+						view.getLblNewVacio().setVisible(false);
+						view.getTable().clearSelection();
+					} else {
+						System.out.println("NOMBRE REPETIDO!!!!!!!!!!!");
+					}
 				} else {
 					view.getLblNewVacio().setVisible(true);
 				}
@@ -63,10 +67,14 @@ public class GestionCategoriasController {
 					view.getLblEditVacio().setVisible(false);
 				}
 				if (selectedRow && notEmptyTextField) {
-					view.getTable().getModel().setValueAt(view.getTextFieldEditNombre().getText(), view.getTable().getSelectedRow(), 1);//Actualizamos de la tabla de la vista
-					model.updateCategoria((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0), view.getTextFieldEditNombre().getText());//Actualizamos de la BBDD
-					view.getTextFieldEditNombre().setText("");
-					view.getTable().clearSelection();
+					if(!thereIsNameInTable(view.getTextFieldEditNombre().getText())) {
+						view.getTable().getModel().setValueAt(view.getTextFieldEditNombre().getText(), view.getTable().getSelectedRow(), 1);//Actualizamos de la tabla de la vista
+						model.updateCategoria((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0), view.getTextFieldEditNombre().getText());//Actualizamos de la BBDD
+						view.getTextFieldEditNombre().setText("");
+						view.getTable().clearSelection();
+					} else {
+						System.out.println("NOMBRE REPETIDO!!!!!!!!!!!");
+					}
 				}
 			}
 		});
@@ -95,6 +103,23 @@ public class GestionCategoriasController {
 	
 	public void destruirVentana() {
 		this.view.dispose();
+	}
+	
+	/**
+	 * Buscamos nombre en tabla para evitar errores SQL de campos unicos
+	 * @param name
+	 * @return
+	 */
+	private boolean thereIsNameInTable(String name) {
+		boolean thereIsNameInTable = false;
+		for(int i = 0; i < view.getTable().getModel().getRowCount(); i++) {
+			String tableName = (String) view.getTable().getModel().getValueAt(i, 1);
+			if(tableName.equalsIgnoreCase(name)) {
+				thereIsNameInTable = true;
+				break;
+			}
+		}
+		return thereIsNameInTable;
 	}
 	
 }
