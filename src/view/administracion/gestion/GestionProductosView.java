@@ -44,6 +44,8 @@ public class GestionProductosView extends JFrame {
 	private JTable table;
 	private JComboBox<String> comboBoxCategoriaNew;
 	private JComboBox<String> comboBoxCategoriaEdit;
+	private JLabel lblNewUnico;
+	private JLabel lblEditUnico;
 	
 	/**
 	 * Create the frame.
@@ -196,6 +198,22 @@ public class GestionProductosView extends JFrame {
 		comboBoxCategoriaEdit.setBounds(10, 471, 325, 23);
 		contentPane.add(comboBoxCategoriaEdit);
 		
+		//lblNewUnico
+		lblNewUnico = new JLabel("Ya existe un registro en la tabla con ese nombre");
+		lblNewUnico.setForeground(Color.RED);
+		lblNewUnico.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewUnico.setBounds(10, 301, 325, 23);
+		lblNewUnico.setVisible(false);
+		contentPane.add(lblNewUnico);
+		
+		//lblEditUnico
+		lblEditUnico = new JLabel("Ya existe un registro en la tabla con ese nombre");
+		lblEditUnico.setForeground(Color.RED);
+		lblEditUnico.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblEditUnico.setBounds(10, 695, 325, 23);
+		lblEditUnico.setVisible(false);
+		contentPane.add(lblEditUnico);
+		
 		setVisible(true);
 	}
 	
@@ -296,6 +314,14 @@ public class GestionProductosView extends JFrame {
 
 	public JComboBox<String> getComboBoxCategoriaEdit() {
 		return comboBoxCategoriaEdit;
+	}
+
+	public JLabel getLblNewUnico() {
+		return lblNewUnico;
+	}
+
+	public JLabel getLblEditUnico() {
+		return lblEditUnico;
 	}
 	
 }

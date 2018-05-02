@@ -42,9 +42,10 @@ public class GestionCategoriasController {
 						model.insertNewCategoria(nextId, name);//Insertamos en BBDD
 						view.getTextFieldNewNombre().setText("");
 						view.getLblNewVacio().setVisible(false);
+						view.getLblNewUnico().setVisible(false);
 						view.getTable().clearSelection();
 					} else {
-						System.out.println("NOMBRE REPETIDO!!!!!!!!!!!");
+						view.getLblNewUnico().setVisible(true);
 					}
 				} else {
 					view.getLblNewVacio().setVisible(true);
@@ -71,9 +72,10 @@ public class GestionCategoriasController {
 						view.getTable().getModel().setValueAt(view.getTextFieldEditNombre().getText(), view.getTable().getSelectedRow(), 1);//Actualizamos de la tabla de la vista
 						model.updateCategoria((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0), view.getTextFieldEditNombre().getText());//Actualizamos de la BBDD
 						view.getTextFieldEditNombre().setText("");
+						view.getLblEditUnico().setVisible(false);
 						view.getTable().clearSelection();
 					} else {
-						System.out.println("NOMBRE REPETIDO!!!!!!!!!!!");
+						view.getLblEditUnico().setVisible(true);
 					}
 				}
 			}

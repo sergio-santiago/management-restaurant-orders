@@ -32,6 +32,8 @@ public class GestionCategoriasView extends JFrame {
 	private JLabel lblEditSeleccion;
 	private JScrollPane scrollPane;
 	private JTable table;
+	private JLabel lblNewUnico;
+	private JLabel lblEditUnico;
 	
 	/**
 	 * Create the frame.
@@ -140,6 +142,22 @@ public class GestionCategoriasView extends JFrame {
 		table.setModel(tableModel);
 		scrollPane.setViewportView(table);
 		
+		//lblNewUnico
+		lblNewUnico = new JLabel("Ya existe un registro en la tabla con ese nombre");
+		lblNewUnico.setForeground(Color.RED);
+		lblNewUnico.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewUnico.setBounds(10, 287, 325, 23);
+		lblNewUnico.setVisible(false);
+		contentPane.add(lblNewUnico);
+		
+		//lblEditUnico
+		lblEditUnico = new JLabel("Ya existe un registro en la tabla con ese nombre");
+		lblEditUnico.setForeground(Color.RED);
+		lblEditUnico.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblEditUnico.setBounds(10, 642, 325, 23);
+		lblEditUnico.setVisible(false);
+		contentPane.add(lblEditUnico);
+		
 		setVisible(true);
 	}
 	
@@ -208,6 +226,14 @@ public class GestionCategoriasView extends JFrame {
 
 	public JTable getTable() {
 		return table;
+	}
+
+	public JLabel getLblNewUnico() {
+		return lblNewUnico;
+	}
+
+	public JLabel getLblEditUnico() {
+		return lblEditUnico;
 	}
 	
 }

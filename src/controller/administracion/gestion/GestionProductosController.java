@@ -54,9 +54,10 @@ public class GestionProductosController {
 						view.getSpinnerPrecioNew().setValue(new Double(0));
 						view.getComboBoxCategoriaNew().setSelectedIndex(0);
 						view.getLblNewVacio().setVisible(false);
+						view.getLblNewUnico().setVisible(false);
 						view.getTable().clearSelection();
 					} else {
-						System.out.println("NOMBRE REPETIDO!!!!!!!!!!!");
+						view.getLblNewUnico().setVisible(true);
 					}
 				} else {
 					view.getLblNewVacio().setVisible(true);
@@ -101,9 +102,10 @@ public class GestionProductosController {
 						view.getComboBoxCategoriaEdit().setSelectedIndex(0);
 						view.getLblEditVacio().setVisible(false);
 						view.getLblEditSeleccion().setVisible(false);
+						view.getLblEditUnico().setVisible(false);
 						view.getTable().clearSelection();
 					} else {
-						System.out.println("NOMBRE REPETIDO!!!!!!!!!!!");
+						view.getLblEditUnico().setVisible(true);
 					}
 				}
 			}
