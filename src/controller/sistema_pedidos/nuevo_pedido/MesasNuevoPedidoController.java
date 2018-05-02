@@ -35,7 +35,8 @@ public class MesasNuevoPedidoController {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						int idMesa = model.searchMesaIdByNombre(mesaButton.getText());
-						System.out.println("Entramos a NUEVO PEDIDO con el ID de mesa " + idMesa);
+						destruirVentana();
+						new NuevoPedidoController(idMesa);
 					}
 				});
 			}
