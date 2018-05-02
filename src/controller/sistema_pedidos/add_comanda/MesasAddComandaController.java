@@ -34,8 +34,8 @@ public class MesasAddComandaController {
 				mesaButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						int idMesa = model.findIdPedidoActivoByNombreMesa(mesaButton.getText());
-						System.out.println("Entramos a ADD COMANDA con el ID de pedido " + idMesa);
+						int idPedido = model.findIdPedidoActivoByNombreMesa(mesaButton.getText());
+						System.out.println("Entramos a ADD COMANDA con el ID de pedido " + idPedido);
 					}
 				});
 			}
