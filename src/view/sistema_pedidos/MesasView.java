@@ -41,7 +41,7 @@ public class MesasView extends JFrame {
 		JPanel panelMesas = new JPanel();
 		panelMesas.setBounds(10, 45, 1330, 673);
 		contentPane.add(panelMesas);
-		panelMesas.setLayout(new GridLayout(5, 5, 0, 0));
+		panelMesas.setLayout(new GridLayout(5, 5, 10, 10));
 		
 		if(mesasButtonNames.length == 0) {
 			//lblNoMesas

@@ -112,13 +112,13 @@ public class AddProductosView extends JFrame {
 		categoriaPanel = new JPanel();
 		categoriaPanel.setBounds(10, 86, 920, 200);
 		contentPane.add(categoriaPanel);
-		categoriaPanel.setLayout(new GridLayout(2, 4, 0, 0));
+		categoriaPanel.setLayout(new GridLayout(2, 4, 10, 10));
 		
 		//productoPanel
 		productoPanel = new JPanel();
 		productoPanel.setBounds(10, 340, 920, 378);
 		contentPane.add(productoPanel);
-		productoPanel.setLayout(new GridLayout(2, 4, 0, 0));
+		productoPanel.setLayout(new GridLayout(2, 4, 10, 10));
 		
 		//lblTotal
 		lblTotal = new JLabel("TOTAL: XX");
