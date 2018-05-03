@@ -57,10 +57,7 @@ public class NuevoPedidoController {
 					//Crear comanda
 					int idComanda = model.getLastIdFrom("comanda") + 1;
 					model.insertNewComanda(idComanda, idPedido);
-					//Recorrer el modelo
-					//Sacar del modelo el nombre de producto(debemos pasarlo a id a traves de una consulta), la cantidad
-					//Meter en BBDD
-					System.out.println(idPedido);
+					//TODO recorrer el modelo e ir metiendo en BBDD relaciones
 				} else {
 					view.getLblNoGuardar().setVisible(true);
 				}
