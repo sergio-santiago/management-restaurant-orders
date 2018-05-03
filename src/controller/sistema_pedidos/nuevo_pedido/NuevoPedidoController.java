@@ -20,6 +20,7 @@ public class NuevoPedidoController {
 	
 	public void generarVentana(DefaultTableModel emptyTableModel, String[] categoriasButtonNames) {
 		view = new AddProductosView(emptyTableModel, categoriasButtonNames);
+		recalcularTotal();
 		//Eventos de la vista
 		view.getBtnAtras().addActionListener(new ActionListener() {
 			@Override
@@ -34,6 +35,7 @@ public class NuevoPedidoController {
 				if(view.getTable().getSelectedRow() != -1) {
 					view.getLblNoEliminar().setVisible(false);
 					((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());
+					recalcularTotal();
 				} else {
 					view.getLblNoEliminar().setVisible(true);
 				}
@@ -77,6 +79,7 @@ public class NuevoPedidoController {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						addProductToTableModel(productoButton.getText());
+						recalcularTotal();
 					}
 				});
 			}
@@ -120,6 +123,20 @@ public class NuevoPedidoController {
 			}
 		}
 		return index;
+	}
+	
+	public void recalcularTotal() {
+		double sumaSubtotales = 0;
+		//Recorremos cada registro de la tabla, lo convertimos a double y lo sumamos
+		for(int i = 0; i < view.getTable().getRowCount(); i++) {
+			String subtotalFormateado = (String) view.getTable().getModel().getValueAt(i, 3);
+			int finalNumero = subtotalFormateado.length() - 2;
+			String subtotalSinDivisa = subtotalFormateado.substring(0, finalNumero);
+			Double subtotal = Double.valueOf(subtotalSinDivisa.replace(",", "*").replace(".", "").replace("*", "."));
+			sumaSubtotales += subtotal;
+		}
+		String sumaSubtotalesFormateado = NumberFormat.getCurrencyInstance().format(sumaSubtotales);
+		view.getLblTotal().setText("TOTAL: " + sumaSubtotalesFormateado);
 	}
 	
 	public void destruirVentana() {

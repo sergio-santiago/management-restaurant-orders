@@ -21,7 +21,7 @@ public class AddProductosView extends JFrame {
 	private JLabel lblProductos;
 	private JLabel lblNoHayCategorias;
 	private JLabel lblNoHayProductos;
-	private JLabel lblNoEliminar;
+	private JLabel lblNoSeleccion;
 	private JLabel lblNoGuardar;
 	private JButton btnAtras;
 	private JButton btnEliminarSeleccion;
@@ -32,7 +32,9 @@ public class AddProductosView extends JFrame {
 	private JPanel productoPanel;
 	private JButton[] categoriasButtons;
 	private JButton[] productosButtons;
-
+	private JLabel lblTotal;
+	private JButton btnMas;
+	private JButton btnMenos;
 
 	/**
 	 * Create the frame.
@@ -68,11 +70,11 @@ public class AddProductosView extends JFrame {
 		contentPane.add(lblNoHayProductos);
 		
 		//lblNoEliminar
-		lblNoEliminar = new JLabel("No se puede eliminar porque no hay ningun producto selecionado en la tabla");
-		lblNoEliminar.setForeground(Color.RED);
-		lblNoEliminar.setBounds(109, 18, 449, 14);
-		lblNoEliminar.setVisible(false);
-		contentPane.add(lblNoEliminar);
+		lblNoSeleccion = new JLabel("No hay ningun producto selecionado en la tabla");
+		lblNoSeleccion.setForeground(Color.RED);
+		lblNoSeleccion.setBounds(109, 18, 449, 14);
+		lblNoSeleccion.setVisible(false);
+		contentPane.add(lblNoSeleccion);
 		
 		//lblNoGuardar
 		lblNoGuardar = new JLabel("No se puede guardar porque no hay ningun producto a\u00F1adido");
@@ -95,12 +97,12 @@ public class AddProductosView extends JFrame {
 		//btnGuardar
 		btnGuardar = new JButton("GUARDAR");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		btnGuardar.setBounds(940, 526, 400, 149);
+		btnGuardar.setBounds(940, 526, 250, 149);
 		contentPane.add(btnGuardar);
 		
 		//scrollPane
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(940, 14, 400, 500);
+		scrollPane.setBounds(940, 17, 400, 437);
 		contentPane.add(scrollPane);
 		
 		//table
@@ -119,6 +121,25 @@ public class AddProductosView extends JFrame {
 		productoPanel.setBounds(10, 340, 920, 378);
 		contentPane.add(productoPanel);
 		productoPanel.setLayout(new GridLayout(2, 4, 0, 0));
+		
+		//lblTotal
+		lblTotal = new JLabel("TOTAL: XX");
+		lblTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblTotal.setBounds(940, 465, 400, 50);
+		contentPane.add(lblTotal);
+		
+		//btnMas
+		btnMas = new JButton("+");
+		btnMas.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		btnMas.setBounds(1200, 526, 140, 70);
+		contentPane.add(btnMas);
+		
+		//btnMenos
+		btnMenos = new JButton("-");
+		btnMenos.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		btnMenos.setBounds(1200, 605, 140, 70);
+		contentPane.add(btnMenos);
 
 		if(categoriasButtonNames.length == 0) {
 			//lblNoHayCategorias
@@ -191,7 +212,7 @@ public class AddProductosView extends JFrame {
 	}
 
 	public JLabel getLblNoEliminar() {
-		return lblNoEliminar;
+		return lblNoSeleccion;
 	}
 
 	public JLabel getLblNoGuardar() {
@@ -234,4 +255,16 @@ public class AddProductosView extends JFrame {
 		return productosButtons;
 	}
 
+	public JLabel getLblTotal() {
+		return lblTotal;
+	}
+
+	public JButton getBtnMas() {
+		return btnMas;
+	}
+
+	public JButton getBtnMenos() {
+		return btnMenos;
+	}
+	
 }
