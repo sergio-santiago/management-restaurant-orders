@@ -3,6 +3,8 @@ package controller.sistema_pedidos.nuevo_pedido;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import model.sistema_pedidos.AddProductosModel;
@@ -13,8 +15,10 @@ public class NuevoPedidoController {
 	private AddProductosModel model = null;
 	private AddProductosView view = null;
 	private double precioTotal = 0;
+	private int idMesa;
 	
 	public NuevoPedidoController(int idMesa) {
+		this.idMesa = idMesa;
 		model = new AddProductosModel();
 		generarVentana(model.getEmptyTableModel(), model.getNombreCategorias());
 	}
@@ -45,13 +49,21 @@ public class NuevoPedidoController {
 		view.getBtnGuardar().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Crear pedido
-				//Crear comanda
-				//TENEMOS QUE SUMAR PARA METER EN PRODUCT, se puede aprovechar para poner un total
-				//Recorrer el modelo
-				//Sacar del modelo el nombre de producto(debemos pasarlo a id a traves de una consulta), la cantidad
-				//Meter en BBDD
-				System.out.println(precioTotal);
+				if(view.getTable().getRowCount() != 0) {
+					//Crear pedido
+					int idPedido = model.getLastIdFrom("pedido") + 1;
+					String fecha = getFecha();
+					model.insertNewPedido(idPedido, precioTotal, fecha, idMesa);
+					//Crear comanda
+					int idComanda = model.getLastIdFrom("comanda") + 1;
+					model.insertNewComanda(idComanda, idPedido);
+					//Recorrer el modelo
+					//Sacar del modelo el nombre de producto(debemos pasarlo a id a traves de una consulta), la cantidad
+					//Meter en BBDD
+					System.out.println(idPedido);
+				} else {
+					view.getLblNoGuardar().setVisible(true);
+				}
 			}
 		});
 		//Listener de los botones de categorias
@@ -143,6 +155,16 @@ public class NuevoPedidoController {
 		this.precioTotal = sumaSubtotales;
 		String sumaSubtotalesFormateado = NumberFormat.getCurrencyInstance().format(sumaSubtotales);
 		view.getLblTotal().setText("TOTAL: " + sumaSubtotalesFormateado);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public String getFecha() {
+		StringBuilder fechaString = new StringBuilder();
+		java.util.Date fecha = new Date();
+		fechaString.append(fecha.getMonth() + 1).append("-");
+		fechaString.append(fecha.getDate()).append("-");
+		fechaString.append(fecha.getYear());
+		return fechaString.toString();
 	}
 	
 	public void destruirVentana() {
