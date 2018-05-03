@@ -71,11 +71,7 @@ public class GestionProductosModel {
 			resultSet = statement.executeQuery("select * from " + DatabaseConnectionService.getDatabase() + ".categoria order by id asc");
 			//Iteramos la los datos metiendolos en el modelo
 			while(resultSet.next()) {
-				StringBuilder categoriaString = new StringBuilder();
-				categoriaString.append(resultSet.getInt("id"));
-				categoriaString.append("-");
-				categoriaString.append(resultSet.getString("nombre"));
-				model.addElement(categoriaString.toString());
+				model.addElement(resultSet.getString("nombre"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,6 +127,31 @@ public class GestionProductosModel {
 		    try { if (statement != null) statement.close(); } catch (Exception e) {};
 		    try { if (DatabaseConnectionService.getConnection() != null) DatabaseConnectionService.closeConnection(); } catch (Exception e) {};
 		}
+	}
+	
+	public int findCategoryIdByName(String name) {
+		int id = -1;		
+		//Sacamos de BBDD
+		DatabaseConnectionService.openConnection();
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			//Hacemos consulta
+			String sql = "select id from " + DatabaseConnectionService.getDatabase() + ".categoria where nombre = '" + name + "'";
+			statement = DatabaseConnectionService.getConnection().createStatement();
+			resultSet = statement.executeQuery(sql);
+			//Iteramos la los datos metiendolos en el modelo
+			resultSet.next();
+			id = resultSet.getInt("id");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		    try { if (resultSet != null) resultSet.close(); } catch (Exception e) {};
+		    try { if (statement != null) statement.close(); } catch (Exception e) {};
+		    try { if (DatabaseConnectionService.getConnection() != null) DatabaseConnectionService.closeConnection(); } catch (Exception e) {};
+		}
+		
+		return id;
 	}
 	
 }

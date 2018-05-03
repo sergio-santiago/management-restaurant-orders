@@ -43,11 +43,9 @@ public class GestionProductosController {
 						String name = view.getTextFieldNewNombre().getText();
 						double precio = (double) view.getSpinnerPrecioNew().getValue();
 						String precioFormateado = NumberFormat.getCurrencyInstance().format(precio);//formateamos el precio para meterlo al modelo de la tabla
-						//separamos el id y el nombre de la categoria para meterlo en BBDD y el modelo de la tabla
-						String categoriaString = (String) view.getComboBoxCategoriaNew().getSelectedItem();
-						int categoriaId = Integer.valueOf(categoriaString.split("-")[0]);
-						String categoria = categoriaString.split("-")[1];
-						tableModel.addRow(new Object[]{nextId, name, precioFormateado, categoria});//Insertamos en la tabla de la vista
+						String categoriaName = (String) view.getComboBoxCategoriaNew().getSelectedItem();
+						int categoriaId = model.findCategoryIdByName(categoriaName);
+						tableModel.addRow(new Object[]{nextId, name, precioFormateado, categoriaName});//Insertamos en la tabla de la vista
 						model.insertNewProducto(nextId, name, precio, categoriaId);//Insertamos en BBDD
 						//Restablecemos valores
 						view.getTextFieldNewNombre().setText("");
@@ -86,14 +84,12 @@ public class GestionProductosController {
 						String name = view.getTextFieldEditNombre().getText();
 						double precio = (double) view.getSpinnerPrecioEdit().getValue();
 						String precioFormateado = NumberFormat.getCurrencyInstance().format(precio);//formateamos el precio para meterlo al modelo de la tabla
-						//separamos el id y el nombre de la categoria para meterlo en BBDD y el modelo de la tabla
-						String categoriaString = (String) view.getComboBoxCategoriaEdit().getSelectedItem();
-						int categoriaId = Integer.valueOf(categoriaString.split("-")[0]);
-						String categoria = categoriaString.split("-")[1];					
+						String categoriaName = (String) view.getComboBoxCategoriaEdit().getSelectedItem();
+						int categoriaId = model.findCategoryIdByName(categoriaName);
 						//Actualizamos la tabla de la vista
 						tableModel.setValueAt(name, view.getTable().getSelectedRow(), 1);
 						tableModel.setValueAt(precioFormateado, view.getTable().getSelectedRow(), 2);
-						tableModel.setValueAt(categoria, view.getTable().getSelectedRow(), 3);
+						tableModel.setValueAt(categoriaName, view.getTable().getSelectedRow(), 3);
 						//Actualizamos BBDD
 						model.updateProducto(id, name, precio, categoriaId);
 						//Restablecemos valores
