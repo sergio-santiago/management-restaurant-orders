@@ -38,25 +38,25 @@ public class MenuAdministracionView extends JFrame {
 		//btnHistorial
 		btnHistorial = new JButton("HISTORIAL de PEDIDOS");
 		btnHistorial.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnHistorial.setBounds(10, 45, 1330, 338);
+		btnHistorial.setBounds(10, 380, 1330, 338);
 		contentPane.add(btnHistorial);
 		
 		//btnGestionCategorias
 		btnGestionCategorias = new JButton("Gestion de CATEGORIAS");
 		btnGestionCategorias.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnGestionCategorias.setBounds(10, 394, 431, 324);
+		btnGestionCategorias.setBounds(10, 45, 431, 324);
 		contentPane.add(btnGestionCategorias);
 		
 		//btnGestionProductos
 		btnGestionProductos = new JButton("Gestion de PRODUCTOS");
 		btnGestionProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnGestionProductos.setBounds(451, 394, 448, 324);
+		btnGestionProductos.setBounds(451, 45, 448, 324);
 		contentPane.add(btnGestionProductos);
 		
 		//btnGestionMesas
 		btnGestionMesas = new JButton("Gestion de MESAS");
 		btnGestionMesas.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnGestionMesas.setBounds(909, 394, 431, 324);
+		btnGestionMesas.setBounds(909, 45, 431, 324);
 		contentPane.add(btnGestionMesas);
 		
 		setVisible(true);

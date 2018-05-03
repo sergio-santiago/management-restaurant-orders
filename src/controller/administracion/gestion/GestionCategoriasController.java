@@ -84,12 +84,15 @@ public class GestionCategoriasController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTable().getSelectedRow() != -1) {
-					int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
-					((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());//Borramos de la tabla de la vista
-					model.deleteCategoria(id);//Borramos de BBDD
-					view.getLblEditSeleccion().setVisible(false);
-					view.getTextFieldEditNombre().setText("");
-					view.getTable().clearSelection();
+					ConfirmacionBorradoController confirmacionBorradoController = new ConfirmacionBorradoController();
+					if(confirmacionBorradoController.isStatus()) {
+						int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
+						((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());//Borramos de la tabla de la vista
+						model.deleteCategoria(id);//Borramos de BBDD
+						view.getLblEditSeleccion().setVisible(false);
+						view.getTextFieldEditNombre().setText("");
+						view.getTable().clearSelection();
+					}
 				} else {
 					view.getLblEditSeleccion().setVisible(true);
 				}

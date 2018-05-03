@@ -30,13 +30,13 @@ public class InicioView extends JFrame {
 		//btnAdministracionDelSistema
 		btnAdministracionDelSistema = new JButton("ADMINISTRACION del sistema");
 		btnAdministracionDelSistema.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnAdministracionDelSistema.setBounds(10, 668, 1330, 50);
+		btnAdministracionDelSistema.setBounds(10, 522, 1330, 196);
 		contentPane.add(btnAdministracionDelSistema);
 		
 		//btnInicioDelSistema
 		btnInicioDelSistema = new JButton("INICIO del sistema de pedidos");
 		btnInicioDelSistema.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		btnInicioDelSistema.setBounds(10, 11, 1330, 646);
+		btnInicioDelSistema.setBounds(10, 11, 1330, 500);
 		contentPane.add(btnInicioDelSistema);
 		
 		setVisible(true);

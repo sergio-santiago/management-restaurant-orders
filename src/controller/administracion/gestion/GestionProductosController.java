@@ -110,16 +110,19 @@ public class GestionProductosController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTable().getSelectedRow() != -1) {
-					int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
-					((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());//Borramos de la tabla de la vista
-					model.deleteProducto(id);//Borramos de BBDD
-					//Restablecemos valores
-					view.getTextFieldEditNombre().setText("");
-					view.getSpinnerPrecioEdit().setValue(new Double(0));
-					view.getComboBoxCategoriaEdit().setSelectedIndex(0);
-					view.getLblEditVacio().setVisible(false);
-					view.getLblEditSeleccion().setVisible(false);
-					view.getTable().clearSelection();
+					ConfirmacionBorradoController confirmacionBorradoController = new ConfirmacionBorradoController();
+					if(confirmacionBorradoController.isStatus()) {
+						int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
+						((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());//Borramos de la tabla de la vista
+						model.deleteProducto(id);//Borramos de BBDD
+						//Restablecemos valores
+						view.getTextFieldEditNombre().setText("");
+						view.getSpinnerPrecioEdit().setValue(new Double(0));
+						view.getComboBoxCategoriaEdit().setSelectedIndex(0);
+						view.getLblEditVacio().setVisible(false);
+						view.getLblEditSeleccion().setVisible(false);
+						view.getTable().clearSelection();
+					}
 				} else {
 					view.getLblEditSeleccion().setVisible(true);
 				}
