@@ -12,6 +12,7 @@ public class NuevoPedidoController {
 	
 	private AddProductosModel model = null;
 	private AddProductosView view = null;
+	private double precioTotal = 0;
 	
 	public NuevoPedidoController(int idMesa) {
 		model = new AddProductosModel();
@@ -50,6 +51,7 @@ public class NuevoPedidoController {
 				//Recorrer el modelo
 				//Sacar del modelo el nombre de producto(debemos pasarlo a id a traves de una consulta), la cantidad
 				//Meter en BBDD
+				System.out.println(precioTotal);
 			}
 		});
 		//Listener de los botones de categorias
@@ -125,6 +127,9 @@ public class NuevoPedidoController {
 		return index;
 	}
 	
+	/**
+	 * Reclacula el atributo que establece la suma de los subtotales y establece el label en pantalla que lo muestra
+	 */
 	public void recalcularTotal() {
 		double sumaSubtotales = 0;
 		//Recorremos cada registro de la tabla, lo convertimos a double y lo sumamos
@@ -135,6 +140,7 @@ public class NuevoPedidoController {
 			Double subtotal = Double.valueOf(subtotalSinDivisa.replace(",", "*").replace(".", "").replace("*", "."));
 			sumaSubtotales += subtotal;
 		}
+		this.precioTotal = sumaSubtotales;
 		String sumaSubtotalesFormateado = NumberFormat.getCurrencyInstance().format(sumaSubtotales);
 		view.getLblTotal().setText("TOTAL: " + sumaSubtotalesFormateado);
 	}
