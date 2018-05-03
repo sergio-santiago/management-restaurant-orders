@@ -38,11 +38,11 @@ public class AddComandaController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTable().getSelectedRow() != -1) {
-					view.getLblNoEliminar().setVisible(false);
+					view.getLblNoSeleccion().setVisible(false);
 					((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());
 					recalcularTotal();
 				} else {
-					view.getLblNoEliminar().setVisible(true);
+					view.getLblNoSeleccion().setVisible(true);
 				}
 			}
 		});
@@ -66,6 +66,53 @@ public class AddComandaController {
 					new MenuSistemaPedidosController();
 				} else {
 					view.getLblNoGuardar().setVisible(true);
+				}
+			}
+		});
+		view.getBtnMenos().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(view.getTable().getSelectedRow() != -1) {
+					if((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 2) == 1) {
+						((DefaultTableModel)view.getTable().getModel()).removeRow(view.getTable().getSelectedRow());
+					} else {
+						view.getTable().getModel().setValueAt((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 2) - 1, view.getTable().getSelectedRow(), 2);//Cambiamos las unidades
+						//Recalculamos subtotal
+						String precioFormateado = (String) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 1);
+						int finalNumero = precioFormateado.length() - 2;
+						String precioSinDivisa = precioFormateado.substring(0, finalNumero);
+						Double precio = Double.valueOf(precioSinDivisa.replace(",", "*").replace(".", "").replace("*", "."));
+						int unidades = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 2);
+						double nuevoSubtotal = precio * unidades;
+						String nuevoSubtotalFormateado = NumberFormat.getCurrencyInstance().format(nuevoSubtotal);
+						view.getTable().getModel().setValueAt(nuevoSubtotalFormateado, view.getTable().getSelectedRow(), 3);
+					}
+					view.getLblNoSeleccion().setVisible(false);
+					recalcularTotal();
+				} else {
+					view.getLblNoSeleccion().setVisible(true);
+				}
+			}
+		});
+		view.getBtnMas().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(view.getTable().getSelectedRow() != -1) {
+					view.getTable().getModel().setValueAt((int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 2) + 1, view.getTable().getSelectedRow(), 2);//Cambiamos las unidades
+					//Recalculamos subtotal
+					String precioFormateado = (String) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 1);
+					int finalNumero = precioFormateado.length() - 2;
+					String precioSinDivisa = precioFormateado.substring(0, finalNumero);
+					Double precio = Double.valueOf(precioSinDivisa.replace(",", "*").replace(".", "").replace("*", "."));
+					int unidades = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 2);
+					double nuevoSubtotal = precio * unidades;
+					String nuevoSubtotalFormateado = NumberFormat.getCurrencyInstance().format(nuevoSubtotal);
+					view.getTable().getModel().setValueAt(nuevoSubtotalFormateado, view.getTable().getSelectedRow(), 3);
+					
+					view.getLblNoSeleccion().setVisible(false);
+					recalcularTotal();
+				} else {
+					view.getLblNoSeleccion().setVisible(true);
 				}
 			}
 		});
@@ -95,6 +142,7 @@ public class AddComandaController {
 				productoButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						view.getLblNoGuardar().setVisible(false);
 						addProductToTableModel(productoButton.getText());
 						recalcularTotal();
 					}
