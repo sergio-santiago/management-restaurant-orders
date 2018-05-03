@@ -21,7 +21,6 @@ public class ConfirmacionBorradoController {
 			public void actionPerformed(ActionEvent e) {
 				status = true;
 				destruirVentana();
-
 			}
 		});
 		view.getBtnNo().addActionListener(new ActionListener() {

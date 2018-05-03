@@ -31,10 +31,10 @@ public class ConfirmacionBorradoView extends JDialog {
 		contentPane.setLayout(null);
 		
 		//lblMensaje
-		lblPass = new JLabel("Esta seguro que desea eliminar el elemento");
+		lblPass = new JLabel("\u00BFEsta seguro que desea eliminar el elemento?");
 		lblPass.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPass.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPass.setBounds(10, 11, 300, 14);
+		lblPass.setBounds(10, 11, 300, 29);
 		contentPane.add(lblPass);
 		
 		//btnSi

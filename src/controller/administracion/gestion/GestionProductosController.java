@@ -110,6 +110,8 @@ public class GestionProductosController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTable().getSelectedRow() != -1) {
+					view.getLblEditVacio().setVisible(false);
+					view.getLblEditSeleccion().setVisible(false);
 					ConfirmacionBorradoController confirmacionBorradoController = new ConfirmacionBorradoController();
 					if(confirmacionBorradoController.isStatus()) {
 						int id = (int) view.getTable().getModel().getValueAt(view.getTable().getSelectedRow(), 0);
@@ -119,8 +121,6 @@ public class GestionProductosController {
 						view.getTextFieldEditNombre().setText("");
 						view.getSpinnerPrecioEdit().setValue(new Double(0));
 						view.getComboBoxCategoriaEdit().setSelectedIndex(0);
-						view.getLblEditVacio().setVisible(false);
-						view.getLblEditSeleccion().setVisible(false);
 						view.getTable().clearSelection();
 					}
 				} else {
