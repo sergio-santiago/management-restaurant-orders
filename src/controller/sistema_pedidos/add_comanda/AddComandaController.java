@@ -1,4 +1,4 @@
-package controller.sistema_pedidos.nuevo_pedido;
+package controller.sistema_pedidos.add_comanda;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,15 +10,15 @@ import controller.sistema_pedidos.MenuSistemaPedidosController;
 import model.sistema_pedidos.AddProductosModel;
 import view.sistema_pedidos.AddProductosView;
 
-public class NuevoPedidoController {
+public class AddComandaController {
 	
 	private AddProductosModel model = null;
 	private AddProductosView view = null;
 	private double precioTotal = 0;
-	private int idMesa;
+	private int idPedido;
 	
-	public NuevoPedidoController(int idMesa) {
-		this.idMesa = idMesa;
+	public AddComandaController(int idPedido) {
+		this.idPedido = idPedido;
 		model = new AddProductosModel();
 		generarVentana(model.getEmptyTableModel(), model.getNombreCategorias());
 	}
@@ -31,7 +31,7 @@ public class NuevoPedidoController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				destruirVentana();
-				new MesasNuevoPedidoController();
+				new MesasAddComandaController();
 			}
 		});
 		view.getBtnEliminarSeleccion().addActionListener(new ActionListener() {
@@ -50,10 +50,6 @@ public class NuevoPedidoController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(view.getTable().getRowCount() != 0) {
-					//Crear pedido
-					int idPedido = model.getLastIdFrom("pedido") + 1;
-					String fecha = getFecha();
-					model.insertNewPedido(idPedido, precioTotal, fecha, idMesa);
 					//Crear comanda
 					int idComanda = model.getLastIdFrom("comanda") + 1;
 					model.insertNewComanda(idComanda, idPedido);
@@ -63,6 +59,9 @@ public class NuevoPedidoController {
 						int cantidad = (int) view.getTable().getModel().getValueAt(i, 2);
 						model.inserNewRelacionComandaProducto(idComanda, idProducto, cantidad);
 					}
+					//Actualizamos el precio total del pedido
+					double nuevoPrecio = model.getPrecioPedidoFromId(idPedido) + precioTotal;
+					model.updatePrecioTotalPedido(idPedido, nuevoPrecio);
 					destruirVentana();
 					new MenuSistemaPedidosController();
 				} else {

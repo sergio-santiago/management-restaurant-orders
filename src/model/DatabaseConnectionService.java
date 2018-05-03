@@ -20,7 +20,6 @@ public final class DatabaseConnectionService {
 	
 	public static void openConnection() {
 		try {
-			System.out.println("Se esta ABRIENDO la conexion con la BBDD...");
 			Class.forName(DatabaseConnectionService.driver);
 			DatabaseConnectionService.url = "jdbc:oracle:" + DatabaseConnectionService.driverType + ":@" + DatabaseConnectionService.host + ":" + DatabaseConnectionService.port + ":" + DatabaseConnectionService.sid;
 			DatabaseConnectionService.connection = DriverManager.getConnection(DatabaseConnectionService.url, DatabaseConnectionService.user, DatabaseConnectionService.pass);
@@ -34,9 +33,7 @@ public final class DatabaseConnectionService {
 	
 	public static void closeConnection() {
 		try {
-			System.out.println("Se esta CERRANDO conexion con la BBDD...");
 			DatabaseConnectionService.connection.close();
-			DatabaseConnectionService.checkConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,10 +41,8 @@ public final class DatabaseConnectionService {
 	
 	public static void checkConnection() {
 		try {
-			if (!DatabaseConnectionService.connection.isClosed()) {
-				System.out.println("La conexion a la base de datos se encuentra ABIERTA");
-			} else {
-				System.out.println("La conexion a la base de datos se encuentra CERRADA");
+			if (DatabaseConnectionService.connection.isClosed()) {
+				System.out.println("ATENCION: la conexion con la BBDD se encuentra cerrada");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

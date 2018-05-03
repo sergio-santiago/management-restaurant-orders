@@ -34,8 +34,8 @@ public class FinalizarPedidoController {
 		view.getBtnFinalizarPedido().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				destruirVentana();
 				model.finalizarPedido(idPedido);
+				destruirVentana();
 				new MenuSistemaPedidosController();
 			}
 		});
