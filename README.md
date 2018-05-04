@@ -6,7 +6,7 @@ System to manage the orders of a restoration business developed in Java.
 ## How to start
 1. Clone the project from the repository: `$git clone https://github.com/sergio-santiago/management-restaurant-orders.git`
 2. The project uses an Oracle Database 11g Express Edition database, you can download it from [here](http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html), once downloaded install it and create an empty database
-3. You must create a series of tables in the database, you can find the  [creation script here](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#table-creation-script), you can also make an insert of some test data to fill your tables with  [the insertion script](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#sample-data-insertion-script)
+3. You must create a series of tables in the database, you can find the [creation script here](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#table-creation-script), you can also make an insert of some test data to fill your tables with  [the insertion script](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#sample-data-insertion-script)
 4. Open the project with your IDE and make sure to add the ``management-restaurant-orders/lib/ojdbc6.jar`` file to the build path, it must be established as a referenced library
 5. To configure the connection of the database in the project you must edit the file ``management-restaurant-orders/src/model/database_config.properties`` with the values of your database
 ```properties
@@ -15,7 +15,8 @@ System to manage the orders of a restoration business developed in Java.
 	dbpassword=root
 	dbname=default_database
 ```
-6. Finally, go to the class ``management-restaurant-orders/src/controller/StartController.java`` and run the main
+6. To access administration, the default password is ``1234``. If you want to use another password enter your [MD5 hash](https://www.md5online.org/md5-encrypt.html) in the file ``management-restaurant-orders/src/controller/administration/pass.txt`` replacing the current hash
+7. Finally, go to the class ``management-restaurant-orders/src/controller/StartController.java`` and run the main
 ## Some information about the project data model
 * [Entity–relationship model](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#entityrelationship-model)
 * [Relational model of tables](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#relational-model-of-tables)
