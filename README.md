@@ -1,8 +1,8 @@
 # Management restaurant orders
-System to manage the orders of a restoration business developed in Java.
-* The database used in the project is an Oracle Database 11g Express Edition
-* For the graphical part the Swing graphic library is used
-* The project is structured in a MVC pattern
+System to manage the orders of a restoration business developed in Java, the database used in the project is an Oracle Database 11g Express Edition, for the graphical part the Swing graphic library is used and the project is structured in a MVC pattern
+* [How to start](https://github.com/sergio-santiago/management-restaurant-orders#how-to-start)
+* [Some information about the project data model](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#some-information-about-the-project-data-model)
+* [Some views](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#some-views)
 ## How to start
 1. Clone the project from the repository: `$git clone https://github.com/sergio-santiago/management-restaurant-orders.git`
 2. The project uses an Oracle Database 11g Express Edition database, you can download it from [here](http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html), once downloaded install it and create an empty database
