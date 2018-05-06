@@ -42,10 +42,12 @@ public class FinalizarPedidoView extends JFrame {
 	private JButton btn100e;
 	private JButton btn200e;
 	private JButton btn500e;
+	private JButton btnTarjeta;
 	private JLabel lblPagado;
 	private JLabel lblDevolucion;
 	private JLabel pagado;
 	private JLabel devolucion;
+	private JButton btnReiniciarPago;
 
 	/**
 	 * Create the frame.
@@ -69,7 +71,7 @@ public class FinalizarPedidoView extends JFrame {
 		//lblAtencion
 		lblAtencion = new JLabel("ATENCION: el total del pedido no coincide con la suma de los subtotales porque el precio de algun producto ha sido modificado tras haberlo a\u00F1adido al pedido");
 		lblAtencion.setForeground(Color.RED);
-		lblAtencion.setBounds(109, 15, 1231, 14);
+		lblAtencion.setBounds(415, 15, 925, 14);
 		lblAtencion.setVisible(lblAtencionVisible);
 		contentPane.add(lblAtencion);
 				
@@ -113,106 +115,116 @@ public class FinalizarPedidoView extends JFrame {
 		btnFinalizarPedido.setBounds(1040, 418, 300, 300);
 		contentPane.add(btnFinalizarPedido);
 		
-		//botones monedas
+		//botones de pago
 		btn1c = new JButton("1 cent");
 		btn1c.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn1c.setBounds(10, 45, 125, 50);
+		btn1c.setBounds(10, 45, 125, 38);
 		contentPane.add(btn1c);
 		
 		btn2c = new JButton("2 cent");
 		btn2c.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn2c.setBounds(145, 45, 125, 50);
+		btn2c.setBounds(145, 45, 125, 38);
 		contentPane.add(btn2c);
 		
 		btn5c = new JButton("5 cent");
 		btn5c.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn5c.setBounds(280, 45, 125, 50);
+		btn5c.setBounds(280, 45, 125, 38);
 		contentPane.add(btn5c);
 		
 		btn10c = new JButton("10 cent");
 		btn10c.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn10c.setBounds(10, 106, 125, 50);
+		btn10c.setBounds(10, 94, 125, 38);
 		contentPane.add(btn10c);
 		
 		btn20c = new JButton("20 cent");
 		btn20c.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn20c.setBounds(145, 106, 125, 50);
+		btn20c.setBounds(145, 94, 125, 38);
 		contentPane.add(btn20c);
 		
 		btn50c = new JButton("50 cent");
 		btn50c.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn50c.setBounds(280, 106, 125, 50);
+		btn50c.setBounds(280, 94, 125, 38);
 		contentPane.add(btn50c);
 		
 		btn1e = new JButton("1 \u20AC");
 		btn1e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn1e.setBounds(10, 167, 125, 50);
+		btn1e.setBounds(10, 143, 125, 38);
 		contentPane.add(btn1e);
 		
 		btn2e = new JButton("2 \u20AC");
 		btn2e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn2e.setBounds(145, 167, 125, 50);
+		btn2e.setBounds(145, 143, 125, 38);
 		contentPane.add(btn2e);
 		
 		btn5e = new JButton("5 \u20AC");
 		btn5e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn5e.setBounds(280, 167, 125, 50);
+		btn5e.setBounds(280, 143, 125, 38);
 		contentPane.add(btn5e);
 		
 		btn10e = new JButton("10 \u20AC");
 		btn10e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn10e.setBounds(10, 229, 125, 50);
+		btn10e.setBounds(10, 192, 125, 38);
 		contentPane.add(btn10e);
 		
 		btn20e = new JButton("20 \u20AC");
 		btn20e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn20e.setBounds(145, 229, 125, 50);
+		btn20e.setBounds(145, 192, 125, 38);
 		contentPane.add(btn20e);
 		
 		btn50e = new JButton("50 \u20AC");
 		btn50e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn50e.setBounds(280, 229, 125, 50);
+		btn50e.setBounds(280, 192, 125, 38);
 		contentPane.add(btn50e);
 		
 		btn100e = new JButton("100 \u20AC");
 		btn100e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn100e.setBounds(10, 290, 125, 50);
+		btn100e.setBounds(10, 241, 125, 38);
 		contentPane.add(btn100e);
 		
 		btn200e = new JButton("200 \u20AC");
 		btn200e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn200e.setBounds(145, 290, 125, 50);
+		btn200e.setBounds(145, 241, 125, 38);
 		contentPane.add(btn200e);
 		
 		btn500e = new JButton("500 \u20AC");
 		btn500e.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn500e.setBounds(280, 290, 125, 50);
+		btn500e.setBounds(280, 241, 125, 38);
 		contentPane.add(btn500e);
+		
+		btnTarjeta = new JButton("Pago con tarjeta");
+		btnTarjeta.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnTarjeta.setBounds(10, 290, 395, 38);
+		contentPane.add(btnTarjeta);
 		
 		//pagado
 		lblPagado = new JLabel("Pagado:");
 		lblPagado.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblPagado.setBounds(10, 353, 395, 50);
+		lblPagado.setBounds(10, 365, 395, 50);
 		contentPane.add(lblPagado);
 
 		pagado = new JLabel("0,00 \u20AC");
 		pagado.setForeground(Color.RED);
 		pagado.setHorizontalAlignment(SwingConstants.CENTER);
 		pagado.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		pagado.setBounds(10, 418, 395, 100);
+		pagado.setBounds(10, 426, 395, 100);
 		contentPane.add(pagado);
 		
 		//devolucion
 		lblDevolucion = new JLabel("Devolucion");
 		lblDevolucion.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblDevolucion.setBounds(10, 529, 395, 50);
+		lblDevolucion.setBounds(10, 557, 395, 50);
 		contentPane.add(lblDevolucion);
 		
 		devolucion = new JLabel("-");
 		devolucion.setHorizontalAlignment(SwingConstants.CENTER);
 		devolucion.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		devolucion.setBounds(10, 590, 395, 100);
+		devolucion.setBounds(10, 618, 395, 100);
 		contentPane.add(devolucion);
+		
+		//reiniciar
+		btnReiniciarPago = new JButton("Reiniciar pago");
+		btnReiniciarPago.setBounds(109, 11, 296, 23);
+		contentPane.add(btnReiniciarPago);
 
 		setVisible(true);		
 	}
@@ -320,6 +332,10 @@ public class FinalizarPedidoView extends JFrame {
 		return btn500e;
 	}
 
+	public JButton getBtnTarjeta() {
+		return btnTarjeta;
+	}
+
 	public JLabel getLblPagado() {
 		return lblPagado;
 	}
@@ -334,6 +350,10 @@ public class FinalizarPedidoView extends JFrame {
 
 	public JLabel getDevolucion() {
 		return devolucion;
+	}
+
+	public JButton getBtnReiniciarPago() {
+		return btnReiniciarPago;
 	}
 	
 }

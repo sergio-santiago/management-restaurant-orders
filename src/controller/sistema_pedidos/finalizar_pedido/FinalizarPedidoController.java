@@ -151,6 +151,20 @@ public class FinalizarPedidoController {
 				actualizarCambio();
 			}
 		});
+		view.getBtnTarjeta().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pagado = precio;
+				actualizarCambio();
+			}
+		});
+		view.getBtnReiniciarPago().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pagado = 0;
+				actualizarCambio();
+			}
+		});
 		
 	}
 	
@@ -169,6 +183,11 @@ public class FinalizarPedidoController {
 			view.getPagado().setForeground(Color.BLACK);
 			view.getDevolucion().setForeground(new Color(0, 204, 0));
 			view.getDevolucion().setText(NumberFormat.getCurrencyInstance().format(this.pagado - this.precio));
+		} else {
+			view.getBtnFinalizarPedido().setEnabled(false);
+			view.getPagado().setForeground(Color.RED);
+			view.getDevolucion().setForeground(Color.BLACK);
+			view.getDevolucion().setText("-");
 		}
 	}
 	
