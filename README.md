@@ -157,7 +157,7 @@ insert into comanda_producto values (5, 5, 1);
 ```
 ## Some views
 ![add_productos](https://image.ibb.co/fX0j9S/add_productos.png)
-![finalizar](https://image.ibb.co/mK7uDn/2018_05_06_13_12_53.png)
+![finalizar](https://image.ibb.co/dE4KUS/2018_05_06_19_38_02.png)
 ![gestion](https://image.ibb.co/bCyt3n/gestion.png)
 ![historial](https://image.ibb.co/ieKcUS/historial.png)
 ![mesas](https://image.ibb.co/de9Nw7/mesas.png)
