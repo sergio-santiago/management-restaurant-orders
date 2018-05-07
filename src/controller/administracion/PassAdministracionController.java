@@ -4,6 +4,7 @@ import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.security.MessageDigest;
 import controller.InicioController;
@@ -45,6 +46,9 @@ public class PassAdministracionController {
 	 */
 	private boolean checkPassword(String passwordString) {
 		boolean validPass = false;
+		File archivo = null;
+	    FileReader fr = null;
+	    BufferedReader br = null;
 		try {
 			//Generamos MD5 con la cadena del formulario
 	    	MessageDigest messageDigest = MessageDigest.getInstance("MD5");
@@ -55,15 +59,21 @@ public class PassAdministracionController {
 	    	}
 	    	//Sacamos hash del archivo
 	    	String path = System.getProperty("user.dir") + "/src/controller/administracion/pass.txt";
-	        FileReader f = new FileReader(path);
-	        BufferedReader b = new BufferedReader(f);
-	        String truePassMD5 = b.readLine();
-	        b.close();
+	    	archivo = new File(path);
+	        fr = new FileReader(archivo);
+	        br = new BufferedReader(fr);
+	        String truePassMD5 = br.readLine();
 	    	//Comparamos
 	    	if (passwordStringMD5.toString().equals(truePassMD5)) validPass = true;
 	    } catch(Exception e) {
 	    	e.printStackTrace();
-	    }
+	    } finally {
+	    	try {
+	    		if (null != fr) fr.close();
+	        } catch (Exception e2) {
+	        	e2.printStackTrace();
+	        }
+	   }
 		return validPass;
 	}
 	
