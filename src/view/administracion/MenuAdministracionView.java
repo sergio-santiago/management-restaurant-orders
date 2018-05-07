@@ -15,6 +15,7 @@ public class MenuAdministracionView extends JFrame {
 	private JButton btnGestionCategorias;
 	private JButton btnGestionProductos;
 	private JButton btnGestionMesas;
+	private JButton btnCambiarPass;
 
 	/**
 	 * Create the frame.
@@ -59,6 +60,11 @@ public class MenuAdministracionView extends JFrame {
 		btnGestionMesas.setBounds(909, 45, 431, 324);
 		contentPane.add(btnGestionMesas);
 		
+		//cambiarPass
+		btnCambiarPass = new JButton("Cambiar contrase\u00F1a");
+		btnCambiarPass.setBounds(1165, 11, 175, 23);
+		contentPane.add(btnCambiarPass);
+		
 		setVisible(true);
 	}
 	
@@ -87,6 +93,10 @@ public class MenuAdministracionView extends JFrame {
 
 	public JButton getBtnGestionMesas() {
 		return btnGestionMesas;
+	}
+
+	public JButton getBtnCambiarPass() {
+		return btnCambiarPass;
 	}
 
 }

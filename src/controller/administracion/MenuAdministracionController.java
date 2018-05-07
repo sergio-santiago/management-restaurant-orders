@@ -54,6 +54,12 @@ public class MenuAdministracionController {
 				new GestionMesasController();
 			}
 		});
+		view.getBtnCambiarPass().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				new CambiarPassAdministracionController();
+			}
+		});
 	}
 	
 	public void destruirVentana() {
