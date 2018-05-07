@@ -15,7 +15,7 @@ System to manage the orders of a restoration business developed in Java, the dat
 	dbpassword=root
 	dbname=default_database
 ```
-6. To access administration, the default password is ``1234``. If you want to use another password enter your [MD5 hash](https://www.md5online.org/md5-encrypt.html) in the file ``management-restaurant-orders/src/controller/administration/pass.txt`` replacing the current hash
+6. To access administration, the default password is ``1234``, you can change it in the application
 7. Finally, go to the class ``management-restaurant-orders/src/controller/StartController.java`` and run the main
 ## Some information about the project data model
 * [Entity–relationship model](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#entityrelationship-model)
