@@ -1,5 +1,7 @@
-# eclipse project file
 .settings/
 .classpath
 .project
 /bin/
+.idea/
+management-restaurant-orders.iml
+out/
