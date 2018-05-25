@@ -193,7 +193,7 @@ public class AddProductosModel {
 	}
 	
 	public void insertNewPedido(int id, double precio, String fecha, int idMesa) {
-		String sql = "insert into " + DatabaseConnectionService.getDatabase() + ".pedido values (" + id + ", " + precio + ", 'true', '" + fecha + "', " + idMesa + ")";
+		String sql = "insert into " + DatabaseConnectionService.getDatabase() + ".pedido values (" + id + ", " + precio + ", 'true', TO_DATE('" + fecha + "', 'mm-dd-yyyy'), " + idMesa + ")";
 		DatabaseConnectionService.openConnection();
 		Statement statement = null;
 		try {
