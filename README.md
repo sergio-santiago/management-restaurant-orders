@@ -4,7 +4,7 @@ System to manage the orders of a restoration business developed in Java, the dat
 * [Some information about the project data model](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#some-information-about-the-project-data-model)
 * [Some views](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#some-views)
 ## How to start
-1. Clone the project from the repository: `$git clone https://github.com/sergio-santiago/management-restaurant-orders.git`
+1. Clone the project from the repository: `$ git clone https://github.com/sergio-santiago/management-restaurant-orders.git`
 2. The project uses an Oracle Database 11g Express Edition database, you can download it from [here](http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html), once downloaded install it and create an empty database
 3. You must create a series of tables in the database, you can find the [creation script here](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#table-creation-script), you can also make an insert of some test data to fill your tables with  [the insertion script](https://github.com/sergio-santiago/management-restaurant-orders/blob/master/README.md#sample-data-insertion-script)
 4. Open the project with your IDE and make sure to add the ``management-restaurant-orders/lib/ojdbc6.jar`` file to the build path, it must be established as a referenced library
